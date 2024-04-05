@@ -34,11 +34,21 @@ public interface GroupIronmenTrackerConfig extends Config {
 
     @ConfigItem(
             keyName = "locationOption",
-            name = "Send Location Info",
+            name = "Transmit In-Game Location",
             description = "Display your player location on a map via the website. ",
             section = groupSection
     )
     default boolean locationOption() {
+        return true;
+    }
+
+    @ConfigItem(
+            keyName = "disableTransmit",
+            name = "Transmit In-Game Activity",
+            description = "Prevent the plugin from being able to transmit data to the API/Website. ",
+            section = groupSection
+    )
+    default boolean disableTransmit() {
         return true;
     }
 
