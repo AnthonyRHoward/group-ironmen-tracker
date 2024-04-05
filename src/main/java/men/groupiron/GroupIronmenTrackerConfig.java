@@ -33,6 +33,16 @@ public interface GroupIronmenTrackerConfig extends Config {
     }
 
     @ConfigItem(
+            keyName = "locationOption",
+            name = "Send Location Info",
+            description = "Display your player location on a map via the website. ",
+            section = groupSection
+    )
+    default boolean locationOption() {
+        return true;
+    }
+
+    @ConfigItem(
             keyName = "groupToken",
             name = "Group Token",
             description = "Secret token for your group provided by the website. Get this from the member which created the group on the site, or create a new one by visiting the site.",

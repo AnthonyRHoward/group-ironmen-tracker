@@ -89,6 +89,9 @@ public class DataManager {
 
             Map<String, Object> updates = new HashMap<>();
             updates.put("name", playerName);
+            if config.locationOption() == true {
+                position.consumeState(updates);
+            }
             inventory.consumeState(updates);
             bank.consumeState(updates);
             equipment.consumeState(updates);
@@ -96,7 +99,6 @@ public class DataManager {
             resources.consumeState(updates);
             skills.consumeState(updates);
             quests.consumeState(updates);
-            position.consumeState(updates);
             runePouch.consumeState(updates);
             interacting.consumeState(updates);
             deposited.consumeState(updates);
@@ -160,6 +162,9 @@ public class DataManager {
 
     // NOTE: These states should only be restored if a new update did not come in at some point before calling this
     private void restoreStateIfNothingUpdated() {
+        if config.locationOption() == true {
+            position.restoreState();
+        }
         inventory.restoreState();
         bank.restoreState();
         equipment.restoreState();
@@ -167,7 +172,6 @@ public class DataManager {
         resources.restoreState();
         skills.restoreState();
         quests.restoreState();
-        position.restoreState();
         runePouch.restoreState();
         interacting.restoreState();
         deposited.restoreState();
