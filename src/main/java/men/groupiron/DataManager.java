@@ -89,7 +89,7 @@ public class DataManager {
 
             Map<String, Object> updates = new HashMap<>();
             updates.put("name", playerName);
-            if config.locationOption() == true {
+            if (locationOption()) {
                 position.consumeState(updates);
             }
             inventory.consumeState(updates);
@@ -162,7 +162,7 @@ public class DataManager {
 
     // NOTE: These states should only be restored if a new update did not come in at some point before calling this
     private void restoreStateIfNothingUpdated() {
-        if config.locationOption() == true {
+        if (locationOption()) {
             position.restoreState();
         }
         inventory.restoreState();
@@ -194,6 +194,15 @@ public class DataManager {
         }
 
         return groupName;
+    }
+
+    private boolean locationOption() {
+        boolean locationOption = config.locationOption();
+        if (!locationOption) {
+            return false;
+        }
+
+        return true;
     }
 
     private String getUpdateGroupMemberUrl() {
