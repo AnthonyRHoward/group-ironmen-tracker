@@ -32,11 +32,20 @@ public interface GroupIronmenTrackerConfig extends Config {
         return "";
     }
 
+    @ConfigSection(
+            name = "Data Transmission",
+            description = "Configure your data transmission settings.",
+            position = 1,
+            closedByDefault = true
+    )
+    String transmitSection = "TransmitSection";
+
     @ConfigItem(
             keyName = "locationOption",
             name = "Transmit In-Game Location",
+            position = 1,
             description = "Display your player location on a map via the website. ",
-            section = groupSection
+            section = transmitSection
     )
     default boolean locationOption() {
         return true;
@@ -45,8 +54,9 @@ public interface GroupIronmenTrackerConfig extends Config {
     @ConfigItem(
             keyName = "disableTransmit",
             name = "Transmit In-Game Activity",
-            description = "Prevent the plugin from being able to transmit data to the API/Website. ",
-            section = groupSection
+            position = 2,
+            description = "Prevent the plugin from being able to transmit data to the API/Website. This includes location as well. ",
+            section = transmitSection
     )
     default boolean disableTransmit() {
         return true;
