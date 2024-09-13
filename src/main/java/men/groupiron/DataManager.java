@@ -61,7 +61,7 @@ public class DataManager {
     private final DepositedItems deposited = new DepositedItems();
 
     public void submitToApi() {
-        if (client.getLocalPlayer() == null || client.getLocalPlayer().getName() == null || isBadWorldType() || !disableTransmit()) return;
+        if (client.getLocalPlayer() == null || client.getLocalPlayer().getName() == null || isBadWorldType()) return;
         if (skipNextNAttempts-- > 0) return;
 
         String playerName = client.getLocalPlayer().getName();
@@ -199,15 +199,6 @@ public class DataManager {
     private boolean locationOption() {
         boolean locationOption = config.locationOption();
         if (!locationOption) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean disableTransmit() {
-        boolean disableTransmit = config.disableTransmit();
-        if (!disableTransmit) {
             return false;
         }
 

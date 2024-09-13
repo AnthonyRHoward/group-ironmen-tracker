@@ -52,17 +52,6 @@ public interface GroupIronmenTrackerConfig extends Config {
     }
 
     @ConfigItem(
-            keyName = "disableTransmit",
-            name = "Transmit In-Game Activity",
-            position = 2,
-            description = "Prevent the plugin from being able to transmit data to the API/Website. This includes location as well. ",
-            section = transmitSection
-    )
-    default boolean disableTransmit() {
-        return true;
-    }
-
-    @ConfigItem(
             keyName = "groupToken",
             name = "Group Token",
             description = "Secret token for your group provided by the website. Get this from the member which created the group on the site, or create a new one by visiting the site.",
